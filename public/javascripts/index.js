@@ -1,11 +1,7 @@
-const ul = document.querySelector('ul')
-
-ul.addEventListener('click', () => {
-  if (event.target.classList.contains('copy')) {
-    event.preventDefault()
-    // alert(event.target.dataset.url)
-    event.target.select()
-    document.execCommand("copy")
-    alert("Text copied: " + event.target.dataset.url);
-  }
-})
+function copyText() {
+  const copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Link copied: " + copyText.value);
+}

@@ -3,6 +3,10 @@ const router = express.Router()
 const Url = require('../../models/url')
 const generateID = require('../../public/javascripts/generateID')
 
+// heroku app
+const heroku = 'https://mysterious-harbor-25170.herokuapp.com/'
+const localhost = 'http://localhost:3000/'
+
 ////////// GET('/') //////////
 router.get('/', (req, res) => {
   res.render('index')
@@ -26,7 +30,12 @@ router.post('/', (req, res) => {
             .then(() => {
               Url.findOne({ id: id })
                 .lean()
-                .then(url => res.render('output', { url: url.id }))
+                .then(url => {
+                  // heroku version
+                  // res.render('output', { url: heroku + 'to/' + url.id })
+                  // local version
+                  res.render('output', { url: localhost + 'to/' + url.id })
+                })
             })
         } else {
           console.log(`[Status] ID: ${id} is duplicate, let's make another one.`)

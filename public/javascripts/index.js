@@ -1,4 +1,4 @@
-////// Prevent non input /////
+////// Prevent undefined input /////
 const ul = document.querySelector('ul')
 const myInput = document.getElementById('myInput')
 const inputCheck = function () {

@@ -32,9 +32,9 @@ router.post('/', (req, res) => {
                 .lean()
                 .then(url => {
                   // heroku version
-                  // res.render('output', { url: heroku + 'to/' + url.id })
+                  res.render('output', { url: heroku + 'to/' + url.id })
                   // local version
-                  res.render('output', { url: localhost + 'to/' + url.id })
+                  // res.render('output', { url: localhost + 'to/' + url.id })
                 })
             })
         } else {

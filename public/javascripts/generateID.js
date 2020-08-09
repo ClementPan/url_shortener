@@ -15,14 +15,6 @@ const generateID = function () {
     newId += parameterArray[index]
   }
 
-  // ///// check if already created a same id 這邊給 home.js 處理
-  // if (idsCreated.find(item => item === newId)) {
-  //   console.log('Already created.')
-  // }
-  // console.log('Brand new ID created')
-  // ///// check if already created a same id 這邊給 home.js 處理
-
-  ///// output
   return newId
 }
 

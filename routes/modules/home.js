@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Url = require('../../models/url')
 const generateID = require('../../public/javascripts/generateID')
+const url = require('../../models/url')
 
 // heroku app
-const heroku = 'https://mysterious-harbor-25170.herokuapp.com/'
-const localhost = 'http://localhost:3000/'
+const heroku = 'mysterious-harbor-25170.herokuapp.com/'
+const localhost = 'localhost:3000/'
 
 ////////// GET('/') //////////
 router.get('/', (req, res) => {
@@ -16,12 +17,14 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // 創造新id
   let id = generateID()
-  const reqUrl = req.body.url
+  let reqUrl = req.body.url
+  if (!reqUrl.includes('http')) reqUrl = 'http://' + reqUrl
+  console.log(`[Process] Requrest Url: ${reqUrl}`)
   console.log('[Process] ID created: ' + id)
 
   // function: idCheck
   const idCheck = function (id) {
-    console.log('[Process] We get into function idCheck')
+    console.log('[Process] ID Checking...')
     Url.findOne({ id: id })
       .then(url => {
         if (!url) {

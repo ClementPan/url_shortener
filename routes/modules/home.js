@@ -3,15 +3,6 @@ const router = express.Router()
 const Url = require('../../models/url')
 const generateID = require('../../public/javascripts/generateID')
 
-////////// GET('/:id') //////////
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-  console.log('Req Url id: ', id)
-  Url.findOne({ id: id })
-    .then(url => res.redirect(url.url))
-    .catch(err => console.error(err))
-})
-
 ////////// GET('/') //////////
 router.get('/', (req, res) => {
   res.render('index')

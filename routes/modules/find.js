@@ -7,7 +7,14 @@ router.get('/:id', (req, res) => {
   const id = req.params.id
   console.log('Req Url id: ', id)
   Url.findOne({ id: id })
-    .then(url => res.redirect(url.url))
+    .then(url => {
+      if (url) {
+        console.log(url)
+        res.redirect(url.url)
+      } else {
+        res.render('noFound')
+      }
+    })
     .catch(err => console.error(err))
 })
 

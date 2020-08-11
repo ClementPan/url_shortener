@@ -35,3 +35,13 @@ const preventEnterKeydown = function (e) {
 }
 
 html.addEventListener('keydown', preventEnterKeydown)
+
+// When user input link that hasn't been shortened and lie
+const noYouDont = function () {
+  alert('沒有吧，我這邊都沒有看到啊，你再輸入一次我幫你縮。')
+}
+
+// When user input link that hasn't been shortened and be honest
+const honestGuy = function () {
+  alert('不錯，你是個誠實的孩子，你就再輸入一次我幫你縮吧。')
+}

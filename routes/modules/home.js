@@ -4,8 +4,8 @@ const Url = require('../../models/url')
 const generateID = require('../../public/javascripts/generateID')
 const url = require('../../models/url')
 
-// heroku app
-const heroku = 'mysterious-harbor-25170.herokuapp.com/'
+// remote and local version
+// const heroku = 'https://mysterious-harbor-25170.herokuapp.com/'
 const localhost = 'localhost:3000/'
 
 ////////// GET('/') //////////
@@ -35,9 +35,9 @@ router.post('/', (req, res) => {
                 .lean()
                 .then(url => {
                   // heroku version
-                  res.render('output', { url: heroku + 'to/' + url.id })
+                  // res.render('output', { url: heroku + 'to/' + url.id })
                   // local version
-                  // res.render('output', { url: localhost + 'to/' + url.id })
+                  res.render('output', { url: localhost + 'to/' + url.id })
                 })
             })
         } else {

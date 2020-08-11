@@ -2,6 +2,9 @@
 ## A simple URL shortener created with express.js, bootstrap and MongoDB as the database.
 ## Exercise for combining simple UI with MongoDB and routes restfully established.
 
+### Try it out here.
+[Url Shortener](https://mysterious-harbor-25170.herokuapp.com/)
+
 #### App images
 ![Index](/images/index.png)
 ![Successfully shortened](/images/success.png)

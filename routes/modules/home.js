@@ -5,8 +5,25 @@ const generateID = require('../../public/javascripts/generateID')
 const url = require('../../models/url')
 
 // remote and local version
-// const heroku = 'https://mysterious-harbor-25170.herokuapp.com/'
-const localhost = 'localhost:3000/'
+const heroku = 'https://mysterious-harbor-25170.herokuapp.com/'
+// const localhost = 'localhost:3000/'
+
+
+////////// GET('/:id') //////////
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  console.log('Req Url id: ', id)
+  Url.findOne({ id: id })
+    .then(url => {
+      if (url) {
+        console.log(url)
+        res.redirect(url.url)
+      } else {
+        res.render('noFound')
+      }
+    })
+    .catch(err => console.error(err))
+})
 
 ////////// GET('/') //////////
 router.get('/', (req, res) => {
@@ -35,9 +52,9 @@ router.post('/', (req, res) => {
                 .lean()
                 .then(url => {
                   // heroku version
-                  // res.render('output', { url: heroku + 'to/' + url.id })
+                  res.render('output', { url: heroku + url.id })
                   // local version
-                  res.render('output', { url: localhost + 'to/' + url.id })
+                  // res.render('output', { url: localhost + url.id })
                 })
             })
         } else {
